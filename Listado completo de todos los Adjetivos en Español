@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Windows version 5.8.0">
+  <title></title>
+</head>
+<body>
+  <p>Listado completo de todos los Adjetivos en Español</p>
+  <div>
+    <table style="width: 377px; margin-left: auto; margin-right: auto;" border="1" width="377">
+      <tbody>
+        <tr>
+          <th style="text-align: center;" colspan="4" scope="row" bgcolor="white">
+          <strong>ADJETIVOS</strong></th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" width="11%"><strong>Pos.</strong></th>
+          <th style="text-align: center;" width="37%"><strong>Atributo</strong></th>
+          <th style="text-align: center;" width="32%"><strong>Valor</strong></th>
+          <th style="text-align: center;" width="19%"><strong>Código</strong></th>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="11%">1</td>
+          <td style="text-align: center;" width="37%">Categoría</td>
+          <td style="text-align: center;" width="32%">Adjetivo</td>
+          <td style="text-align: center;" width="19%">A</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="11%">2</td>
+          <td style="text-align: center;" width="37%">Tipo</td>
+          <td style="text-align: center;" width="32%">Calificativo</td>
+          <td style="text-align: center;" width="19%">Q</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="11%">3</td>
+          <td style="text-align: center;" width="37%">Grado</td>
+          <td style="text-align: center;" width="32%">Apreciativo</td>
+          <td style="text-align: center;" width="19%">A</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" rowspan="3" width="11%">4</td>
+          <td style="text-align: center;" rowspan="3" width="37%">Género</td>
+          <td style="text-align: center;" width="32%">Masculino</td>
+          <td style="text-align: center;" width="19%">M</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="32%">Femenino</td>
+          <td style="text-align: center;" width="19%">F</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="32%">Común</td>
+          <td style="text-align: center;" width="19%">C</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" rowspan="3" width="11%">5</td>
+          <td style="text-align: center;" rowspan="3" width="37%">Número</td>
+          <td style="text-align: center;" width="32%">Singular</td>
+          <td style="text-align: center;" width="19%">S</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="32%">Plural</td>
+          <td style="text-align: center;" width="19%">P</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="32%">Invariable</td>
+          <td style="text-align: center;" width="19%">N</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="11%">6</td>
+          <td style="text-align: center;" width="37%">Caso</td>
+          <td style="text-align: center;" width="32%">-</td>
+          <td style="text-align: center;" width="19%">0</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="11%">7</td>
+          <td style="text-align: center;" width="37%">Función</td>
+          <td style="text-align: center;" width="32%">Participio</td>
+          <td style="text-align: center;" width="19%">P</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <ul>
+      <li>El lema de los adjetivos siempre es la forma masculina singular (<em>bonito</em>) o la
+      forma singular si el adjetivo es de género común (<em>alegre</em>). Para los adjetivos
+      invariables, es decir, aquellos que tanto para el singular como para el plural presentan la
+      misma forma, el lema coincide con la forma .</li>
+    </ul>
+  </div>
+  <div>
+    <blockquote>
+      Ejemplos:
+    </blockquote>
+    <table style="width: 375px; margin-left: auto; margin-right: auto;" width="375">
+      <tbody>
+        <tr>
+          <th style="text-align: center;" bgcolor="#000066" width="34%"><span style=
+          "color: #ffffff;"><strong>Forma</strong></span></th>
+          <th style="text-align: center;" bgcolor="#000066" width="33%"><span style=
+          "color: #ffffff;"><strong>Lema</strong></span></th>
+          <th style="text-align: center;" bgcolor="#000066" width="33%"><span style=
+          "color: #ffffff;"><strong>Etiqueta</strong></span></th>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">alegres</td>
+          <td style="text-align: center;" width="33%">alegre</td>
+          <td style="text-align: center;" width="33%">AQ0CP00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">alegre</td>
+          <td style="text-align: center;" width="33%">alegre</td>
+          <td style="text-align: center;" width="33%">AQ0CS00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">bonitas</td>
+          <td style="text-align: center;" width="33%">bonito</td>
+          <td style="text-align: center;" width="33%">AQ0FP00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">bonita</td>
+          <td style="text-align: center;" width="33%">bonito</td>
+          <td style="text-align: center;" width="33%">AQ0FS00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">bonitos</td>
+          <td style="text-align: center;" width="33%">bonito</td>
+          <td style="text-align: center;" width="33%">AQ0MP00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">bonito</td>
+          <td style="text-align: center;" width="33%">bonito</td>
+          <td style="text-align: center;" width="33%">AQ0MS00</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;" width="34%">quemada</td>
+          <td style="text-align: center;" width="33%">quemado</td>
+          <td style="text-align: center;" width="33%">AQ0FS0P</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/**
+ * Verifica si un texto corresponde a un municipio oficial de España.
+ * * @param {string} input El nombre del municipio a verificar.
+ * @return El nombre oficial, una sugerencia o un error.
+ * @customfunction
+ */
+function VERIFICAR_MUNICIPIO(input) {
+  if (!input || input.toString().trim() === "") {
+    return "Error: Celda vacía";
+  }
+
+  // Limpiamos el texto de entrada
+  var municipioUsuario = input.toString().trim();
+
+  try {
+    // Usamos el servicio de Mapas de Google Apps Script
+    // Restringimos la búsqueda a España ('es')
+    var response = Maps.newGeocoder()
+      .setRegion('es')
+      .setLanguage('es')
+      .geocode(municipioUsuario);
+
+    if (response.status === 'OK') {
+      var resultado = response.results[0];
+      var nombreOficial = "";
+
+      // Buscamos el componente 'locality' (municipio)
+      for (var i = 0; i < resultado.address_components.length; i++) {
+        var comp = resultado.address_components[i];
+        if (comp.types.indexOf('locality') !== -1) {
+          nombreOficial = comp.long_name;
+          break;
+        }
+      }
+
+      // Si no hay 'locality', probamos con subdivisiones administrativas menores
+      if (!nombreOficial) {
+        for (var i = 0; i < resultado.address_components.length; i++) {
+          var comp = resultado.address_components[i];
+          if (comp.types.indexOf('administrative_area_level_4') !== -1) {
+            nombreOficial = comp.long_name;
+            break;
+          }
+        }
+      }
+
+      // Validación final
+      if (!nombreOficial) {
+        return "Error: No se pudo identificar como municipio.";
+      }
+
+      // Comparación exacta (ignorando mayúsculas/minúsculas)
+      if (municipioUsuario.toLowerCase() === nombreOficial.toLowerCase()) {
+        return nombreOficial; // Está escrito correctamente
+      } else {
+        return "Sugerencia: " + nombreOficial; // Error ortográfico o añadiduras
+      }
+
+    } else {
+      return "Error: Municipio no encontrado en España.";
+    }
+
+  } catch (e) {
+    return "Error de conexión o API.";
+  }
+}
+
+/**
+ * Verifica si un texto corresponde a una provincia oficial de España.
+ * @param {string} input El nombre de la provincia a verificar.
+ * @return El nombre oficial de la provincia, una sugerencia o un error.
+ * @customfunction
+ */
+function VERIFICAR_PROVINCIA(input) {
+  if (!input || input.toString().trim() === "") {
+    return "Error: Celda vacía";
+  }
+
+  var provinciaUsuario = input.toString().trim();
+
+  try {
+    // Geocodificación restringida a España
+    var response = Maps.newGeocoder()
+      .setRegion('es')
+      .setLanguage('es')
+      .geocode(provinciaUsuario + ", España");
+
+    if (response.status === 'OK') {
+      var resultado = response.results[0];
+      var nombreOficialProvincia = "";
+
+      // Buscamos el componente 'administrative_area_level_2' (Provincia)
+      for (var i = 0; i < resultado.address_components.length; i++) {
+        var comp = resultado.address_components[i];
+        if (comp.types.indexOf('administrative_area_level_2') !== -1) {
+          nombreOficialProvincia = comp.long_name;
+          break;
+        }
+      }
+
+      if (!nombreOficialProvincia) {
+        return "Error: No se detecta como provincia.";
+      }
+
+      // Comparación exacta ignorando mayúsculas/minúsculas
+      if (provinciaUsuario.toLowerCase() === nombreOficialProvincia.toLowerCase()) {
+        return nombreOficialProvincia; 
+      } else {
+        // Devuelve la sugerencia si hay errores como "Zaragoça" o "Vizcaya" (vs Bizkaia)
+        return "Sugerencia: " + nombreOficialProvincia;
+      }
+
+    } else {
+      return "Error: Provincia no encontrada.";
+    }
+
+  } catch (e) {
+    return "Error de conexión.";
+  }
+}

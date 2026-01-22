@@ -1,0 +1,60 @@
+/**
+ * Calcula la distancia entre dos puntos (dirección o coordenadas).
+ * @param {"43.2215,-2.0178"} origen Dirección, ciudad o coordenadas "lat,long".
+ * @param {"Madrid"} destino Dirección, ciudad o coordenadas "lat,long".
+ * @param {"coche"} modo "coche", "andando", "bicicleta" o "transporte público".
+ * @return La distancia formateada.
+ * @customfunction
+ */
+function CALCULAR_DISTANCIA(origen, destino, modo) {
+  return obtenerDatoRuta(origen, destino, modo, "distancia");
+}
+
+/**
+ * Calcula el tiempo de viaje entre dos puntos (dirección o coordenadas).
+ * @param {"43.2215,-2.0178"} origen Dirección, ciudad o coordenadas "lat,long".
+ * @param {"Madrid"} destino Dirección, ciudad o coordenadas "lat,long".
+ * @param {"coche"} modo "coche", "andando", "bicicleta" o "transporte público".
+ * @return El tiempo estimado.
+ * @customfunction
+ */
+function CALCULAR_TIEMPO(origen, destino, modo) {
+  return obtenerDatoRuta(origen, destino, modo, "tiempo");
+}
+
+/**
+ * Función interna optimizada para procesar la solicitud.
+ */
+function obtenerDatoRuta(origen, destino, modo, tipoDato) {
+  if (!origen || !destino) return "Faltan datos";
+  
+  // Forzamos que los inputs sean tratados como texto y limpiamos espacios
+  var start = origen.toString().trim();
+  var end = destino.toString().trim();
+  
+  var modoGmaps = {
+    'andando': Maps.DirectionFinder.Mode.WALKING,
+    'bicicleta': Maps.DirectionFinder.Mode.BICYCLE,
+    'transporte público': Maps.DirectionFinder.Mode.TRANSIT,
+    'transporte publico': Maps.DirectionFinder.Mode.TRANSIT,
+    'coche': Maps.DirectionFinder.Mode.DRIVING
+  }[modo.toLowerCase()] || Maps.DirectionFinder.Mode.DRIVING;
+
+  try {
+    var ruta = Maps.newDirectionFinder()
+      .setOrigin(start)
+      .setDestination(end)
+      .setMode(modoGmaps)
+      .setLanguage('es')
+      .getDirections();
+
+    if (ruta.routes.length > 0) {
+      var leg = ruta.routes[0].legs[0];
+      return (tipoDato === "distancia") ? leg.distance.text : leg.duration.text;
+    } else {
+      return "Ruta no encontrada";
+    }
+  } catch (e) {
+    return "Error: " + e.message;
+  }
+}

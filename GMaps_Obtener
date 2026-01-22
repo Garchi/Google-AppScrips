@@ -1,0 +1,67 @@
+/**
+ * Devuelve la dirección formateada y corregida por Google Maps.
+ *
+ * @param {"Calle de Ejemplo, 123, Madrid"} direccion La dirección a buscar.
+ * @return La dirección corregida o una sugerencia.
+ * @customfunction
+ */
+function OBTENER_DIRECCION(direccion) {
+  if (!direccion || direccion == "") {
+    return "Error: La celda está vacía.";
+  }
+
+  var respuesta = Maps.newGeocoder().setLanguage('es').geocode(direccion);
+
+  if (respuesta.status === 'OK' && respuesta.results.length > 0) {
+    var resultado = respuesta.results[0];
+    var textoDireccion = resultado.formatted_address;
+    
+    // Verificamos la calidad del resultado
+    // ROOFTOP = Preciso (edificio exacto)
+    // RANGE_INTERPOLATED = Muy aproximado (entre dos números de calle)
+    // GEOMETRIC_CENTER / APPROXIMATE = Aproximación general (calle o ciudad)
+    var tipo = resultado.geometry.location_type;
+    var esSugerencia = (tipo === 'APPROXIMATE' || tipo === 'GEOMETRIC_CENTER');
+
+    if (esSugerencia) {
+      return "[Sugerencia] " + textoDireccion;
+    } else {
+      return textoDireccion;
+    }
+  } else {
+    return "Error: No se encontró la dirección.";
+  }
+}
+
+/**
+ * Devuelve las coordenadas (Latitud, Longitud) de una dirección.
+ *
+ * @param {"Calle de Ejemplo, 123, Madrid"} direccion La dirección a buscar.
+ * @return Las coordenadas separadas por coma.
+ * @customfunction
+ */
+function OBTENER_COORDENADAS(direccion) {
+  if (!direccion || direccion == "") {
+    return "Error: La celda está vacía.";
+  }
+
+  var respuesta = Maps.newGeocoder().setLanguage('es').geocode(direccion);
+
+  if (respuesta.status === 'OK' && respuesta.results.length > 0) {
+    var resultado = respuesta.results[0];
+    var lat = resultado.geometry.location.lat;
+    var lng = resultado.geometry.location.lng;
+    
+    var tipo = resultado.geometry.location_type;
+    var esSugerencia = (tipo === 'APPROXIMATE' || tipo === 'GEOMETRIC_CENTER');
+    var coordenadas = lat + ", " + lng;
+
+    if (esSugerencia) {
+      return "[Sugerencia] " + coordenadas;
+    } else {
+      return coordenadas;
+    }
+  } else {
+    return "Error: No se pudieron obtener coordenadas.";
+  }
+}
